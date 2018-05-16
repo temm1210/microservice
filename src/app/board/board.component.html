@@ -1,0 +1,71 @@
+<div class="container-fluid">
+  <h2>게시판</h2>
+
+  <table class="table table-hover">
+    <thead class="row">
+      <tr>
+        <th class="col-md-1">No</th>
+        <th class="col-md-6">Title</th>
+        <th class="col-md-3">Writer</th>
+        <th class="col-md-1">Date</th>
+        <th class="col-md-1">Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let board of pagedBoards; let i=index">
+        <td>{{boards.length - pager.startIndex-i}} </td>
+        <td><a [routerLink]="['/board/view', board._id]">{{board.title}}</a></td>
+        <td>{{board.writer}}</td>
+        <td>{{board.date | timeAgo}}</td>
+        <td>{{board.count}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <a role="button" routerLink="/board/write" class="btn btn-primary">글작성</a>
+  <button (click)="search('')" class="btn btn-info" style="width:10%">전체글보기</button>
+
+  <div *ngIf="pager.pages && pager.pages.length" class="paging-center">
+    <ul class="pagination">
+      <li [ngClass]="{disabled:pager.currentPage === 1}">
+        <a (click)="paging(1)">First</a>
+      </li>
+
+      <li [ngClass]="{disabled:pager.currentPage === 1}">
+        <a (click)="paging(pager.currentPage - 1)">Previous</a>
+      </li>
+
+      <li *ngFor="let page of pager.pages" [class.active]="pager.currentPage === page">
+        <a (click)="paging(page)">{{page}}</a>
+      </li>
+
+      <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+        <a (click)="paging(pager.currentPage + 1)">Next</a>
+      </li>
+
+      <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+        <a (click)="paging(pager.totalPages)">Last</a>
+      </li>
+      <!-- <li><a href="#">1</a></li>
+      <li class="active"><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li><a href="#">4</a></li>
+      <li><a href="#">5</a></li> -->
+    </ul>
+  </div>
+
+  
+
+  <div class="pull-right" style="width:40%;">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search" #keyword>
+      <div class="input-group-btn">
+        <button class="btn btn-default" (click)="search(keyword.value)">
+          <i class="glyphicon glyphicon-search"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p></p>

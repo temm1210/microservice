@@ -1,0 +1,5 @@
+{
+    "DBMember":"mongodb://localhost/member",
+    "DBBoard":"mongodb://localhost/board",
+    "secret":"stwSecret"
+}

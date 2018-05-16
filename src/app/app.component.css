@@ -1,0 +1,9 @@
+.container-fluid {
+    padding: 0;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.active {
+    color:rgba(70,90,152,.5) !important;
+}
