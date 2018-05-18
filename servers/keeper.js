@@ -15,7 +15,6 @@ io.on('connection', (socket) => {
             key: socket.id,
             server: microInfo
         });
-
         console.log('keeper ############## receive message ############## \n',nodes );
         io.emit('message', nodes);
     })

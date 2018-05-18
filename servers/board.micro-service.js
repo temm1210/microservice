@@ -11,7 +11,6 @@ var MicroBoardInfo = require('../server-info/server-info').MicroBoard;
 var passport = require('passport');
 require('../passport-jwt/passport')(passport);
 
-
 var app = express();
 
 mongoose.Promise = global.Promise;
